@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% from 'bootstrap5/form.html' import render_form, render_field, render_form_row %}
+
+{% block content %}
+
+ <div class="container">
+    <h1>{{  title }}</h1>
+    <form method="post" action="/" enctype="multipart/form-data"> 
+            {{ form.csrf_token }}
+            {{ render_form_row([form.weeklist,form.playerslist] ,col_map={'weeklist': 'col-md-2', 'playerslist': 'col-md-4'})}}
+            {{ render_form_row([form.submit]) }}    
+    </form> 
+</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+flask
+bootstrap-flask
+Flask-Markdown
+flask-WTF
+gunicorn==20.0.4
+markdown
+nfl_data_py
+openai
+pandas==1.5
+python-dotenv
