@@ -39,11 +39,15 @@ def get_analsysis(player_id, player_name,week):
     )
     
     # Create the list of seasons to download
-    seasons = datetime.now().year[2024]
+    end_year = datetime.now().year
+    start_year = end_year - 5
+
+    year_season=[i for i in range(start_year,end_year)]
+    
 
 
     teams_df = nfl.import_team_desc()
-    weekly_data = nfl.import_weekly_data(seasons)
+    weekly_data = nfl.import_weekly_data(year_season)
 
     drop_columns=['fantasy_points', 'fantasy_points_ppr','headshot_url']
     weekly_data = weekly_data.drop(drop_columns,axis=1)
@@ -52,7 +56,7 @@ def get_analsysis(player_id, player_name,week):
  
     content = weekly_data.to_json(orient="records")
 
-    prompt = "Provide Fantasy Football Analysis for {0} and Fantasy Football predicted score for Week {1} using the attached data in json format".format(player_name,week)
+    prompt = "Provide Fantasy Football Analysis for {0} and Fantasy Football predicted score for Week {1} for the season {2} using the attached data in json format".format(player_name,week,end_year)
 
     response = client.chat.completions.create(
         model="fantfootball",
