@@ -16,7 +16,7 @@ import pandas as pd
 
 
 app = Flask(__name__) 
-app.secret_key = b'_53oi3uriq9pifpff;apl'
+app.secret_key = 
 bootstrap = Bootstrap5(app)
 
 class fantballForm(FlaskForm):
